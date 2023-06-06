@@ -19,6 +19,9 @@ jobs:
           host: 34.125.182.254
           username: shashanketa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            whoami
+            ls -al
 
       - name: Update known_hosts
         run: |
