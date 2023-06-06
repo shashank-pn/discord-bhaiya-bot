@@ -1,4 +1,4 @@
-const {Client, Events, GatewayIntentBits, IntentsBitField} = require('discord.js');
+const {Client, Events, GatewayIntentBits} = require('discord.js');
 require('dotenv').config();
 
 const debug = process.env.DEBUG === true;
@@ -13,7 +13,7 @@ const testIntents = [
 const client = new Client({intents: testIntents});
 
 // Message Contents
-const keywords = ['kirat bhaiyaa', 'kirat bhaiya', 'harkirat sir', 'harkirat singh sir', 'kirat sir', 'kirat sire', 'kirat'];
+const keywords = ['kirat bhaiyaa', 'kirat bhaiya', 'harkirat sir', 'harkirat singh sir', 'kirat sir', 'kirat sire', 'kirat bhai'];
 const pattern = new RegExp(keywords.join("|"), "i");
 
 const messages = [
