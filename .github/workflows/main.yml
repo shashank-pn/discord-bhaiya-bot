@@ -22,19 +22,5 @@ jobs:
           script: |
             whoami
             ls -al
-
-      - name: Update known_hosts
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan 34.125.182.254 >> ~/.ssh/known_hosts
-          chmod 644 ~/.ssh/known_hosts
-
-      - name: Stop main process
-        run: |
-          # Execute command to stop the main process
-          ssh shashanketa@34.125.182.254 'pkill node'
-
-      - name: Deploy
-        run: |
-          # Execute deployment commands on the VM using SSH
-          ssh shashanketa@34.125.182.254  'cd ~/app && git pull && npm install && nohup npm run start > /dev/null 2>&1 &'
+            pkill node
+            cd ~/app && git pull && npm install && nohup npm run start > /dev/null 2>&1 &
