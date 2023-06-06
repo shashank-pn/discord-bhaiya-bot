@@ -22,5 +22,8 @@ jobs:
           script: |
             whoami
             ls -al
-            pkill node
-            cd ~/app && git pull && npm install && nohup npm run start > /dev/null 2>&1 &
+            echo pkill node
+            node -v
+            npm -v
+            cd ~/app && git pull && npm install 
+            nohup npm run start > /dev/null 2>&1 &
