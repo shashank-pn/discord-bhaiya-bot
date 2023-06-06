@@ -19,7 +19,13 @@ jobs:
           host: 34.125.182.254
           username: shashanketa
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          
+
+      - name: Update known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan 34.125.182.254 >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
       - name: Stop main process
         run: |
           # Execute command to stop the main process
