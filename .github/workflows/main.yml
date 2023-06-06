@@ -21,9 +21,29 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             whoami
-            ls -al
-            echo pkill node
-            node -v
-            npm -v
-            cd ~/app && git pull && npm install 
-            nohup npm run start > /dev/null 2>&1 &
+
+      - name: Add Public keys
+        run: |
+          whoami
+          ls -lah
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" >> ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh
+          chmod 600 ~/.ssh/id_rsa.pub
+          ssh shashanketa@34.125.182.254 'pkill node'
+
+      - name: Stop main process
+        run: |
+          # Execute command to stop the main process
+          ssh shashanketa@34.125.182.254 'pkill node'
+
+      - name: Deploy
+        run: |
+          # Execute deployment commands on the VM using SSH
+          ssh shashanketa@34.125.182.254  'cd ~/app && git pull && npm install'
+
+      - name: Start
+        run: |
+          # Execute deployment commands on the VM using SSH
+          ssh shashanketa@34.125.182.254  'cd ~/app && nohup npm run start > /dev/null 2>&1 &'
+          
