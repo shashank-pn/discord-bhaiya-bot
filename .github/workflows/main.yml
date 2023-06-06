@@ -1,0 +1,31 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: SSH into VM
+        uses: appleboy/ssh-action@master
+        with:
+          host: 34.125.182.254
+          username: shashanketa
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Stop main process
+        run: |
+          # Execute command to stop the main process
+          ssh shashanketa@34.125.182.254 'pkill node'
+
+      - name: Deploy
+        run: |
+          # Execute deployment commands on the VM using SSH
+          ssh shashanketa@34.125.182.254  'cd ~/app && git pull && npm install && nohup npm run start > /dev/null 2>&1 &'
