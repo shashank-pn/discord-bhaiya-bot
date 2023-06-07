@@ -1,4 +1,4 @@
-# Discord  Bhaiyaa ??
+# Discord  Bhaiya Bot
 
 <hr>
 
@@ -18,5 +18,5 @@ Had no idea how the permissions work, please figure out yourself.
 
 <hr>
 
-URL: https://discord.com/api/oauth2/authorize?client_id=1115654318297731182&permissions=292059069440&scope=bot
+BOT Url: https://discord.com/api/oauth2/authorize?client_id=1115654318297731182&permissions=292059069440&scope=bot
 
