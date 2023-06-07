@@ -18,6 +18,7 @@ const pattern = new RegExp(keywords.join("|"), "i");
 
 const messages = [
     'Neeko dandham ra dootha.',
+    "Ekkadi nundi vacchav ra nuvvu",
     // "Ah, the delight of being referred to with such profound reverence. My heart skips a beat in absolute jubilation.",
     // "Oh, how I cherish the unique talent of addressing others with unmatched originality. You're truly a maestro of nomenclature.",
     // "The artistry of your appellations knows no bounds. I am forever indebted to your unparalleled linguistic prowess.",
